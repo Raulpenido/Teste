@@ -6,7 +6,11 @@
 #define PAPEL 1 
 #define TESOURA 2
 
-
+/*
+Nesta primeira versão, vamos traduzir as regras da forma mais direta possível. 
+Usaremos ifs aninhados (um dentro do outro). A lógica é: primeiro, verificamos a escolha do jogador. 
+Depois, dentro de cada verificação, analisamos todas as possibilidades para a escolha do computador.
+*/
 void versao_01() {
     int jogador, computador;
     printf("Escolha: 0 (Pedra), 1 (Papel), 2 (Tesoura): ");
@@ -88,32 +92,6 @@ void versao_03(){
 
 }
 
-void versao_05(){
-        int jogador, computador;
-    char jogar_novamente;
-    int jogador_ganha[] = {TESOURA, PEDRA, PAPEL};
-    do {
-        printf("Escolha: 0 (Pedra), 1 (Papel), 2 (Tesoura): ");
-        scanf("%d", &jogador);
-        computador = rand() % 3; // Gera um número aleatório entre 0 e 2
-        printf("Computador escolheu: %d\n", computador);
-        if (jogador == computador) {
-            printf("Empate!\n");
-        } else if (jogador_ganha[jogador] == computador) {
-            printf("Jogador vence!\n");
-        } else {
-            printf("Computador vence!\n");
-        }
-        printf("Quer jogar novamente? (s/n): ");
-        scanf(" %c", &jogar_novamente);
-    } while (jogar_novamente == 's' || jogar_novamente == 'S');
-
-}
-
-    
-
-
-
 
 int main() {
     srand(time(NULL)); // Inicializa o gerador de números aleatórios
@@ -123,7 +101,5 @@ int main() {
     versao_02();
     printf("\nVersão 03:\n");
     versao_03();
-    printf("\nVersão 05:\n");
-    versao_05();
     return 0;
 }
